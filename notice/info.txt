@@ -1,0 +1,69 @@
+■ File/Directory List 출력 참고 사이트
+https://dzone.com/articles/java-example-list-all-files
+
+
+■ Thread 참고사이트
+https://www.javatpoint.com/creating-thread
+
+
+■ Synchronize 참고사이트
+http://winterbe.com/posts/2015/04/30/java8-concurrency-tutorial-synchronized-locks-examples/
+
+
+■ Socket 참고사이트
+https://gist.github.com/junsuk5/f0ff2298e17853dc48e89f2dfc7bd985
+
+
+■ Encryption/Decryption
+
+Encoding 
+사용성을 위해 데이터의 형태나 형식을 변환하는 처리나 처리 방식. 동일한 알고리즘을 사용하여 되돌릴 수 있음. 키가 사용되지 않음. 
+예) ASCII, UNICODE, URL encoding, Base64 
+
+Encryption 
+데이터의 기밀성을 유지하기 위해 사용되며 원래의 값으로 되돌리기 위해서는 비밀 유지가 필요한 키를 사용해야 함. 
+예) AES, Blowfish, RSA 
+
+Hashing 
+임의의 길이의 데이터를 고정된 길이의 데이터로 매핑. 암호화 해시 함수(cryptographic hash function)는 해시 값으로부터 원래의 입력값과의 관계를 찾기 어려운 성질을 갖게 함. 
+예) SHA-3, MD5, etc. 
+
+Obfuscation (난독화) 
+리버스 엔지니어링에 의해 소스 코드가 유출되는 것을 막기 위해서 사람들이 쉽게 이해할 수 없게 코드를 변환하는 것. 
+예) Javascript obfuscator, Proguard
+
+
+■ Base64
+8비트 이진 데이터(예를 들어 실행 파일이나, ZIP 파일 등)를 문자 코드에 영향을 받지 않는 공통 ASCII 영역의 문자들로만 이루어진 일련의 문자열로 바꾸는 인코딩 방식. 
+원래 Base 64를 글자 그대로 번역하여 보면 64진법이란 뜻. 
+64가 2의 제곱수(64 = 26)이며, 2의 제곱수들에 기반한 진법들 중에서 화면에 표시되는 ASCII 문자들을 써서 표현할 수 있는 가장 큰 진법. 
+ASCII 문자들이 128개가 되지 않는 까닭에 이 인코딩은 전자 메일을 통한 이진 데이터 전송 등에 많이 쓰이고 있음. 
+인코딩된 문자열은 알파벳 대소문자와 숫자, 그리고 "+", "/" 기호 64개로 이루어지며, "="는 끝을 알리는 코드로 쓰임.
+Encoding 테스트 : https://www.base64encode.org/ 
+Decoding 테스트 : https://www.base64decode.org/
+Ex) This is a Base64 test.  VGhpcyBpcyBhIEJhc2U2NCB0ZXN0Lg==
+
+
+■ AES
+Advanced Encryption Standard (고급 암호화 표준)
+미국 정부 표준으로 지정된 블록 암호 형식. 
+이전의 DES를 대체하며, 미국 표준 기술 연구소(NIST)가 5년의 표준화 과정을 거쳐 2001년 11월 26일에 연방 정보 처리 표준(FIPS 197)으로 발표함. 
+2002년 5월 26일부터 표준으로 효력을 발휘하기 시작.
+벨기에 암호학자인 존 대먼과 빈센트 라이먼에 의해서 만들어졌으며, 처음에는 두 사람의 이름을 합해서 레인달(Rijndael, [rɛindaːl])이라는 이름을 사용.
+128비트의 블록 크기를 가지고 있고 128, 160, 192, 224, 256비트 등 128비트 이상의 모든 32의 배수 비트 길이의 키를 사용할 수 있으며, 미국 표준으로 인정받은 것은 128비트임.
+■ DES (Data Encryption Standard)
+블록 암호의 일종으로, 미국 NBS (National Bureau of Standards, 현재 NIST)에서 국가 표준으로 정한 암호. 
+DES는 대칭키 암호이며, 56비트의 키를 사용. DES는 현재 취약한 것으로 알려져 있음
+
+Encryption 테스트 : https://www.browserling.com/tools/aes-encrypt 
+Decryption 테스트 : https://www.browserling.com/tools/aes-decrypt
+
+
+■ Cryptographic hash function
+암호학적 해시함수(cryptographic hash function)는 해시 함수의 일종으로,임의의 길이를 갖는 메시지를 입력하여 고정된 길이의 해시값을 출력하는 함수이다. 
+각 메시지마다 해시값이 다르기 때문에 해시함수는 메시지의 무결성을 확인하는 방법으로 메시지의 내용이 변경되지 않았다는 것을 보장해준다. 또한, 일방향함수를 포함하고 있기 때문에 해시값에서 원문을 재현할 수는 없고 같은 해시값을 가진 다른 데이터를 작성하는 것도 극히 어렵다. 이런 특성을 이용해서 통신의 암호화 보조수단이나 사용자 인증, 디지털 서명 등에 응용되고 있다.
+해시함수의 종류
+•MD(Message Digest) : 미국 MIT의 로널드 리베스트 교수가 공개키 기반 구조를 만들기 위해 RSA와 함께 개발  MD2, MD4, MD5
+•SHA(Secure Hash Algorithm) : 미국 NSA에 의해 만들어졌다. MD4가 발전한 형태이다. MD5보다 조금 느리지만 좀더 안전한 것으로 알려져 있다.  
+SHA-1, SHA-2 (SHA-256, SHA-384, SHA-512)
+SHA256 Hash Generator http://passwordsgenerator.net/sha256-hash-generator/
