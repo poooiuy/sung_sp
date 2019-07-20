@@ -3,7 +3,6 @@ package sung02.exam2018.sub4;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,33 +13,93 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Map;
 
 
 public class RunManager {
 	
-	static String cmd = "";
-
+	static Map<Integer, String> dataMap = new HashMap<>();
+	
+	
 	public static void main(String[] args) throws IOException {
-		ThreadClass tc = new ThreadClass(); 
-	    Thread th = new Thread(tc); 
-	    th.start();
-	}
-
 		
-	private void onMessage(String cmd) throws IOException {
+		socketServer();
+		
+	}
+	
+	private static void socketServer() throws IOException {
+		
+		 ServerSocket listener = new ServerSocket(9876);
+		 BufferedReader br;
+		 String message;
+		 int cnt = 0;
+		 
+        try {
+            while (true) {
+                Socket sock = listener.accept();
+                System.out.println("¿¬°áµÊ!!!");
+                PrintWriter pw = new PrintWriter(new OutputStreamWriter(sock.getOutputStream()));
+                br = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+                
+                if( (message = br.readLine()) != null ) {
+                	System.out.println("Received Message : "+message);
+                
+	                if(cnt == 0) {
+	                	work(message);
+	                	readData(message);
+	                	pw.print(dataMap.get(1));
+	                	cnt += 1;
+	                }else {
+	                	switch(message) {
+	                	case "ACK" : 
+	                		pw.println(dataMap.get(cnt+1));
+	                		pw.flush();
+	                		cnt += 1;
+	                		break;
+	                	case "ERR" :
+	                		pw.println(dataMap.get(cnt));
+	                		pw.flush();
+	                		break;
+	                	default : 
+	                		pw.println(dataMap.get(Integer.parseInt(message)));
+	                		pw.flush();
+	                		cnt += 1;
+	                		break;
+	                	}
+	                }
+	                
+	                if(cnt == dataMap.size()) {
+	                	sock.close();
+	                }
+                }
+            }
+        }catch(Exception e) {
+        	listener.close();
+        }
+	}
+	
+	private static void readData(String inputFileName) throws IOException {
+		
+		String fileName = new FileSearch().searchFilePath(inputFileName, ".//src//sung02.exam2018.file//BIGFILE//");
+		BufferedReader in = new BufferedReader(new FileReader(fileName));
+		String line;
+		int lineCnt = 1;
+		while ((line = in.readLine()) != null) {
+			dataMap.put(lineCnt, line);
+			lineCnt++;
+		}
+		
+	}
+	
+	private static void work(String inputFileName) throws IOException {
 		
 		BufferedReader in = null;
 		
 		try {
 			
-			Scanner scanner = new Scanner(System.in);
-			
-			cmd = scanner.nextLine();
-			
-			String fileName = new FileSearch().searchFilePath(cmd, ".//src//sung02.exam2018.file//BIGFILE//");
+			String fileName = new FileSearch().searchFilePath(inputFileName, ".//src//sung02.exam2018.file//BIGFILE//");
 			String temp = fileName + "_temp";
 			
 			System.out.println("fileName : " + fileName);
@@ -203,37 +262,4 @@ public class RunManager {
 		return result;
     }
 
-}
-
-
-class ThreadClass implements Runnable { // Runnable Interface ±¸Çö 
-	public ServerSocket listener;   
-	private BufferedReader br;
-    
-    public void run() {
-        listener = null;
- 		try {
-			listener = new ServerSocket(9876);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
- 		
-        try {
-            while (true) {
-                Socket s = listener.accept();
-                InputStream input = s.getInputStream();
-                br = new BufferedReader(new InputStreamReader(input));
-                String message = br.readLine();
-                System.out.println("Received Message : "+message);
-            }
-        } catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-            try {
-				listener.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-        } 		
-    } 
 }
