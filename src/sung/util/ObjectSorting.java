@@ -1,4 +1,4 @@
-package sung00.util;
+package sung.util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -16,7 +16,7 @@ public static void main(String[] args) throws NumberFormatException, IOException
 		String line = "";
 		List<DataVo> list = new ArrayList<>();
 		
-		FileReader fileReader = new FileReader("./src/sung6/dataType/DS_Sample1.txt");
+		FileReader fileReader = new FileReader("./src/sung00.file/DS_Sample1.txt");
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
 		
 		while((line = bufferedReader.readLine()) != null) {
