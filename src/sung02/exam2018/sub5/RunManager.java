@@ -1,4 +1,4 @@
-package sung02.exam2018.sub4;
+package sung02.exam2018.sub5;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,6 +13,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,7 +53,9 @@ public class RunManager {
 					System.out.println("Received Message : " + message);
 	
 					if (init) {
-						work(message);
+						String[] temp = message.split("#");
+						message = temp[0];
+						work(message, temp[1]);
 						readData(message);
 						pw.println(dataMap.get(1));
 						pw.flush();
@@ -104,7 +107,7 @@ public class RunManager {
 		
 	}
 	
-	private static void work(String inputFileName) throws IOException {
+	private static void work(String inputFileName, String target) throws IOException {
 		
 		BufferedReader in = null;
 		
@@ -133,11 +136,11 @@ public class RunManager {
 					
 				} else {
 					if(count == 0) {
-						write(temp, beforeline, false);
+						write(temp, beforeline, false, target);
 						beforeline = line;
 					}else {
 						beforeline = (count + 1)+"#"+beforeline;
-						write(temp, beforeline, false);
+						write(temp, beforeline, false, target);
 						beforeline = line;
 						count =  0;
 					}
@@ -147,10 +150,10 @@ public class RunManager {
 			
 			//	Last line
 			if(count == 0) {
-				write(temp, beforeline, true);
+				write(temp, beforeline, true, target);
 			}else {
 				beforeline = (count + 1)+"#"+beforeline;
-				write(temp, beforeline, true);
+				write(temp, beforeline, true, target);
 			}
 			
 			// 종료 후 작업
@@ -174,10 +177,11 @@ public class RunManager {
 
 	}
 	
-	private static void write(String fileName, String line, boolean last) throws IOException {
+	private static void write(String fileName, String line, boolean last, String target) throws IOException {
 		
 		String line2 = process(line);
-		line2 = caesar(line2, 5);
+//		line2 = caesar(line2, 5);
+		line2 = encryt(line2, target);
 		
 		String outputFile = fileName;
 		
@@ -272,5 +276,25 @@ public class RunManager {
 		
 		return result;
     }
+	
+	private static String encryt(String s, String x) {
+		
+		String result = x;
+		String[] target = x.split("");
+		
+		for(int i=0; i<s.length(); i++){
+			char str = s.charAt(i);
+			
+			if( !isHasValue(target, str+"" ) ) {
+				result += str;
+			}
+		}
+		
+		return result;
+    }
+	
+	public static boolean isHasValue(String[] targetArr, String value) {
+		return Arrays.stream(targetArr).anyMatch(value::equals);
+	}
 
 }
