@@ -22,7 +22,7 @@ public class Validator {
 		BufferedReader in = null;
 		
 		try {
-			in = new BufferedReader(new FileReader("./src/sung01/file/client/INSPECTOR.TXT"));
+			in = new BufferedReader(new FileReader("./src/sung01.education2019.workshop.file/CLIENT/INSPECTOR.TXT"));
 			String line;
 			String encPsw = CardUtility.passwordEncryption(psw);
 			while ((line = in.readLine()) != null) {
@@ -107,13 +107,13 @@ public class Validator {
 
 	private void saveFile(String cardInfo, String validateCode, String inpectTime) throws IOException {
 		// Create Folder
-		File destFolder = new File("./src/sung01/file/client/" + insId);
+		File destFolder = new File("./src/sung01.education2019.workshop.file/" + insId);
 		if (!destFolder.exists()) {
 			destFolder.mkdirs();
 		}
 					
 		// File Writing
-		String strFilename = destFolder + "./src/sung01/file/client/" + insId + "_" + onBusTime + ".TXT";
+		String strFilename = destFolder + "/" + insId + "_" + onBusTime + ".TXT";
 		FileWriter fw = null;
 		
 		try {
@@ -131,14 +131,14 @@ public class Validator {
 		Socket socket = null;
 		DataOutputStream os = null;
 		try {
-			socket = new Socket("127.0.0.1", 27015);
+			socket = new Socket("127.0.0.1", 27017);
 			os = new DataOutputStream(socket.getOutputStream());
 			
 			byte[] buffer = new byte[4096];
 			int length;
 			
 			// get all the files from a directory
-			File directory = new File("..//" + insId);
+			File directory = new File("./src/sung01.education2019.workshop.file/" + insId);
 			File[] fList = directory.listFiles();
 			for (File file : fList) {
 				if (file.isFile()) {
@@ -169,7 +169,7 @@ public class Validator {
 
 	private void moveFileToBackup(String path, String name) {
 		File fileFrom = new File(path); // source
-		File fileTo = new File("./src/sung01/file/BACKUP/" + name); // destination
+		File fileTo = new File("./src/sung01.education2019.workshop.file/BACKUP/" + name); // destination
 		fileTo.delete();
 		fileFrom.renameTo(fileTo);
 	}

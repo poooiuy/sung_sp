@@ -1,3 +1,6 @@
+■ 필기 학습 URL
+https://m.terms.naver.com/list.nhn?cid=58528&categoryId=58528&so=st4.asc
+
 ■ File/Directory List 출력 참고 사이트
 https://dzone.com/articles/java-example-list-all-files
 

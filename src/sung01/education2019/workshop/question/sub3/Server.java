@@ -1,28 +1,29 @@
-package sung01.solve.server;
+package sung01.education2019.workshop.question.sub3;
 
 import java.io.DataInputStream;
 import java.io.EOFException;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class CardServer implements Runnable { // Runnable Interface 구현
+public class Server implements Runnable{
+	
 	public static final int BUF_SIZE = 4096;
-	
 	private ServerSocket serverSocket;
-	
 	private boolean isStop;
-
+	
 	public ServerSocket getServerSocket() {
 		return serverSocket;
 	}
-
-	//파일명(String),파일크기(int),파일데이터(NByte)
+	
+	
+	@Override
 	public void run() {
 		serverSocket = null;
 		try {
-			serverSocket = new ServerSocket(27017);
+			serverSocket = new ServerSocket(27016);
 			
 			byte[] buffer = new byte[BUF_SIZE];
 			int length;
@@ -52,7 +53,7 @@ public class CardServer implements Runnable { // Runnable Interface 구현
 					if (socket != null) { socket.close(); }
 				}
 			}
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
@@ -64,6 +65,13 @@ public class CardServer implements Runnable { // Runnable Interface 구현
 	}
 	
 	private void writeFile(String fileName, byte[] buffer, int offset, int length) throws IOException {
+		
+		// Create Folder
+		File destFolder = new File("./src/sung01.education2019.workshop.file/SERVER");
+		if(!destFolder.exists()) {
+			destFolder.mkdirs(); 
+		}  
+		
 		FileOutputStream fw = null;
 		try {
 			fw = new FileOutputStream("./src/sung01.education2019.workshop.file/SERVER/" + fileName, true);
@@ -72,7 +80,7 @@ public class CardServer implements Runnable { // Runnable Interface 구현
 			if (fw != null) { fw.close(); }
 		}
 	}
-
+	
 	public synchronized void close() {
 		isStop = true;
 		
@@ -82,4 +90,5 @@ public class CardServer implements Runnable { // Runnable Interface 구현
 			e.printStackTrace();
 		}
 	}
+
 }
