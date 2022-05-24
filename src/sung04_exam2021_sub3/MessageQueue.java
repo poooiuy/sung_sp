@@ -1,4 +1,4 @@
-package com.lgcns.test;
+package sung04_exam2021_sub3;
 
 import java.util.HashMap;
 import java.util.LinkedList;

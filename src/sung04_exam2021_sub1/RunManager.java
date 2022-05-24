@@ -1,4 +1,4 @@
-package com.lgcns.test;
+package sung04_exam2021_sub1;
 
 public class RunManager {
 	

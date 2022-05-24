@@ -1,4 +1,4 @@
-package com.lgcns.test;
+package sung04_exam2021_sub4;
 
 import java.io.IOException;
 import java.util.HashMap;
