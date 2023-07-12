@@ -3,38 +3,36 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>
 			<attribute name="module" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/gson-2.8.6.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/gson-2.8.6-javadoc.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/gson-2.8.6-sources.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/javax.servlet-api-3.1.0.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/javax.servlet-api-3.1.0-javadoc.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/javax.servlet-api-3.1.0-sources.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-client-9.4.38.v20210224.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-client-9.4.38.v20210224-javadoc.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-client-9.4.38.v20210224-sources.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-http-9.4.38.v20210224.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-http-9.4.38.v20210224-javadoc.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-http-9.4.38.v20210224-sources.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-io-9.4.38.v20210224.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-io-9.4.38.v20210224-javadoc.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-io-9.4.38.v20210224-sources.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-security-9.4.38.v20210224.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-security-9.4.38.v20210224-javadoc.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-security-9.4.38.v20210224-sources.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-server-9.4.38.v20210224.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-server-9.4.38.v20210224-javadoc.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-server-9.4.38.v20210224-sources.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-servlet-9.4.38.v20210224.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-servlet-9.4.38.v20210224-javadoc.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-servlet-9.4.38.v20210224-sources.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-util-9.4.38.v20210224.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-util-9.4.38.v20210224-javadoc.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-util-9.4.38.v20210224-sources.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-util-ajax-9.4.38.v20210224.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-util-ajax-9.4.38.v20210224-javadoc.jar"/>
-	<classpathentry kind="lib" path="D:/cssung/_sung/workspace/sung_sp/lib/jetty-util-ajax-9.4.38.v20210224-sources.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry including="**/*.java" kind="src" output="target/classes" path="src">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="target/generated-sources/annotations">
+		<attributes>
+			<attribute name="ignore_optional_problems" value="true"/>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="m2e-apt" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/test-classes" path="target/generated-test-sources/test-annotations">
+		<attributes>
+			<attribute name="ignore_optional_problems" value="true"/>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="m2e-apt" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/lib_worker3.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>

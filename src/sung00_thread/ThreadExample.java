@@ -16,7 +16,12 @@ public class ThreadExample{
 class ThreadClass extends Thread{
 	
 	public void run() {
-		System.out.println("Running..");
+		while(true) {
+			System.out.println("Running..");
+		}
 	}
 
 }
+
+//	join은 모든 Thread를 start 한 후 join 한다.
+//	thread는 run 메소드 안에 while 같은 반복문을 실행하지 않으면 반복되지 않는다.

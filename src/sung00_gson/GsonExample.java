@@ -1,11 +1,17 @@
 package sung00_gson;
 
+import java.util.Map;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 
 public class GsonExample {
+	
+//	int º¯È¯
+//	int count = (int) Math.round((double) jo.get("inputQueueCount"));
 
 	public static void main(String[] args) {
 
@@ -47,6 +53,7 @@ public class GsonExample {
 	private static void test() {
 		Gson gson = new Gson();
 		JsonObject jObj = gson.fromJson("", JsonObject.class);
+		
 	}
 
 }
