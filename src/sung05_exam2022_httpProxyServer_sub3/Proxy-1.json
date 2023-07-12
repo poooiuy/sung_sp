@@ -1,0 +1,13 @@
+{
+  "port": 5001,
+  "routes": [
+    {
+      "pathPrefix": "/front",
+      "url": "http://127.0.0.1:8081"
+    },
+    {
+      "pathPrefix": "/auth",
+      "url": "http://127.0.0.1:5002"
+    }
+  ]
+}

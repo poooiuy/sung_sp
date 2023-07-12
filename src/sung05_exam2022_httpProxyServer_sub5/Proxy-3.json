@@ -1,0 +1,13 @@
+{
+  "port": 5003,
+  "routes": [
+    {
+      "pathPrefix": "/notice",
+      "url": "http://127.0.0.1:8083",
+      "responseTimeLimit": 500,
+      "maxDelayCount": 3,
+      "retryAfter": 2000,
+      "healthCheck": "/health"
+    }
+  ]
+}
