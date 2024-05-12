@@ -1,0 +1,3 @@
+create#action#http://127.0.0.1:8011/create
+add#action#http://127.0.0.1:8012/add
+fetch#action#http://127.0.0.1:8013/fetch
